@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import dotenv from 'dotenv';
-import pick from 'lodash/pick.js';
+import { pick } from 'lodash';
 
 import { createBroadcastAdapter } from './dist/index.js';
 
@@ -10,7 +10,7 @@ const adapter = createBroadcastAdapter({
   port: env.PORT,
   connectionPassword: env.CONNECTION_PASSWORD,
   commandPassword: env.COMMAND_PASSWORD,
-  updateIntervalMs: 1000,
+  updateIntervalMs: 250,
 });
 
 const cars = new Map();
@@ -45,7 +45,7 @@ adapter.on('realtime-car-update', (data) => {
   cars.set(data.carIndex, {
     ...cars.get(data.carIndex),
     ...pick(data, ['kmh', 'position']),
-    delta: format(data.delta, 'ss.SSS'),
+    delta: Number(data.delta / 1000).toFixed(1),
     // currentLap: currentLapTime,
     lastLap: lastLapTime,
     bestLap: bestSessionLapTime,
@@ -70,7 +70,7 @@ adapter.on('entry-list-car', (data) => {
 setInterval(() => {
   console.clear();
   console.table([...cars.values()].sort((a, b) => a.position - b.position));
-}, 1000);
+}, 250);
 
 process.on('beforeExit', () => {
   adapter.destroy();

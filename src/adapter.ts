@@ -77,7 +77,7 @@ export class BroadcastAdapter {
         displayName: this.config.displayName ?? 'acc-broadcast-adapter',
         connectionPassword: this.config.connectionPassword,
         commandPassword: this.config.commandPassword,
-        updateInterval: this.config.updateIntervalMs ?? 1000,
+        updateInterval: this.config.updateIntervalMs ?? 250,
       }).catch((err) => {
         console.error(err);
         reject(err);
@@ -136,6 +136,8 @@ export class BroadcastAdapter {
   ): Promise<void> {
     return new Promise((resolve, reject) => {
       const outgoingMessage = outgoingMessagesSenders[message];
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       const buffer = outgoingMessage(data);
 
       this.socket.send(buffer, this.config.port, this.config.address, (error) =>
