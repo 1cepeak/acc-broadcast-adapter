@@ -25,13 +25,13 @@ import {
   RequestEntryListMessage,
 } from '@/messages/outgoing/request-entry-list.message';
 import {
-  type UnregisterCommandApplicationData,
-  UnregisterCommandApplicationMessage,
-} from '@/messages/outgoing/unregister-command-application.message.ts';
-import {
   type RequestTrackData,
   RequestTrackDataMessage,
 } from '@/messages/outgoing/request-track-data.message.ts';
+import {
+  type UnregisterCommandApplicationData,
+  UnregisterCommandApplicationMessage,
+} from '@/messages/outgoing/unregister-command-application.message.ts';
 
 export type IncomingMessages =
   | 'registration-result'
