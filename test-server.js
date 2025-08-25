@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
 import dotenv from 'dotenv';
-import { pick } from 'lodash';
+import pick from 'lodash/pick.js';
 
-import { createBroadcastAdapter } from './dist/index.js';
+import { createBroadcastAdapter } from './dist/adapter.js';
 
 const { parsed: env } = dotenv.config();
 const adapter = createBroadcastAdapter({
@@ -14,7 +14,6 @@ const adapter = createBroadcastAdapter({
 });
 
 const cars = new Map();
-// const track = {};
 
 adapter
   .connect()
@@ -28,7 +27,6 @@ adapter.on('realtime-car-update', (data) => {
     return format(ms, 'mm:ss.SSS');
   }
 
-  const currentLapTime = formatTime(new Date(data.currentLap.milliseconds));
   const lastLapTime = formatTime(new Date(data.lastLap.milliseconds));
   const bestSessionLapTime = formatTime(new Date(data.bestSessionLap.milliseconds));
 
@@ -46,7 +44,6 @@ adapter.on('realtime-car-update', (data) => {
     ...cars.get(data.carIndex),
     ...pick(data, ['kmh', 'position']),
     delta: Number(data.delta / 1000).toFixed(1),
-    // currentLap: currentLapTime,
     lastLap: lastLapTime,
     bestLap: bestSessionLapTime,
     lastLapSectors: mapSectors(data.lastLap.splits),
@@ -63,15 +60,13 @@ adapter.on('entry-list-car', (data) => {
   });
 });
 
-// adapter.on('track-data', (data) => {
-//   console.log(JSON.stringify(data));
-// });
+adapter.on('track-data', (data) => {
+  console.log(JSON.stringify(data));
+});
 
 setInterval(() => {
   console.clear();
   console.table([...cars.values()].sort((a, b) => a.position - b.position));
 }, 250);
 
-process.on('beforeExit', () => {
-  adapter.destroy();
-});
+process.on('beforeExit', () => adapter.destroy());

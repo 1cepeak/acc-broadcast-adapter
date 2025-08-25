@@ -1,26 +1,29 @@
-import { type EntryListData, EntryListMessage } from './incoming/entry-list.message.js';
-import { type EntryListCarData, EntryListCarMessage } from './incoming/entry-list-car.message.js';
+import { type EntryListData, EntryListMessage } from '@/messages/incoming/entry-list.message';
+import {
+  type EntryListCarData,
+  EntryListCarMessage,
+} from '@/messages/incoming/entry-list-car.message';
 import {
   type RealtimeCarUpdateData,
   RealTimeCarUpdateMessage,
-} from './incoming/realtime-car-update.message.js';
+} from '@/messages/incoming/realtime-car-update.message';
 import {
   type RealtimeUpdateData,
   RealtimeUpdateMessage,
-} from './incoming/realtime-update.message.js';
+} from '@/messages/incoming/realtime-update.message';
 import {
   type RegistrationResultData,
   RegistrationResultMessage,
-} from './incoming/registration-result.message.js';
-import { type TrackData, TrackDataMessage } from './incoming/track-data.message.js';
+} from '@/messages/incoming/registration-result.message';
+import { type TrackData, TrackDataMessage } from '@/messages/incoming/track-data.message';
 import {
   type RegisterCommandApplicationData,
   RegisterCommandApplicationMessage,
-} from './outgoing/register-command-application.message.js';
+} from '@/messages/outgoing/register-command-application.message';
 import {
   type RequestEntryListData,
   RequestEntryListMessage,
-} from './outgoing/request-entry-list.message.js';
+} from '@/messages/outgoing/request-entry-list.message';
 
 export type IncomingMessages =
   | 'registration-result'

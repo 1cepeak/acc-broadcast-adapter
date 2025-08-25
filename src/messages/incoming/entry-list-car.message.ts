@@ -1,4 +1,4 @@
-import { IncomingMessage } from '../incoming-message.js';
+import { IncomingMessage } from '@/messages/incoming-message';
 
 export type CupCategory = 'pro' | 'pro-am' | 'am' | 'silver' | 'national';
 

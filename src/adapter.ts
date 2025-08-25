@@ -1,13 +1,13 @@
 import { createSocket, type Socket } from 'node:dgram';
 
-import { type RegistrationResultData } from './messages/incoming/registration-result.message.js';
 import {
   getIncomingMessageType,
   incomingMessagesHandlers,
   type IncomingMessagesMap,
   type OutgoingMessagesMap,
   outgoingMessagesSenders,
-} from './messages/index.js';
+} from '@/messages';
+import { type RegistrationResultData } from '@/messages/incoming/registration-result.message';
 
 export interface Config {
   address: string;

@@ -1,4 +1,4 @@
-import { BufferWriter } from '../buffer-writer.js';
+import { BufferWriter } from '@/buffer-writer';
 
 export abstract class OutgoingMessage<MessageData extends object> {
   protected writer: BufferWriter = new BufferWriter();

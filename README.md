@@ -27,7 +27,7 @@ adapter.connect()
 process.on('beforeExit', () => adapter.destroy());
 ```
 
-> Don't forget to destroy your connection using `adapter.destroy()` when Node.js process will be killed
+> Don't forget to destroy your connection using `adapter.destroy()` when Node.js process will be killed.
 
 ### `createBroadcastAdapter` configuration parameters
 

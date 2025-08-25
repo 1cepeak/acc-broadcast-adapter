@@ -1,4 +1,4 @@
-import { OutgoingMessage } from '../outgoing-message.js';
+import { OutgoingMessage } from '@/messages/outgoing-message';
 
 export interface RequestEntryListData {
   connectionId: number;

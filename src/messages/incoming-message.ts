@@ -1,4 +1,4 @@
-import { BufferReader } from '../buffer-reader.js';
+import { BufferReader } from '@/buffer-reader';
 
 export abstract class IncomingMessage<ParsingResult extends object> {
   protected readonly buffer: Buffer;

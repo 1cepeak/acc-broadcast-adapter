@@ -1,7 +1,7 @@
-import type { Lap } from '../../buffer-reader.js';
-import { IncomingMessage } from '../incoming-message.js';
+import type { Lap } from '@/buffer-reader';
+import { IncomingMessage } from '@/messages/incoming-message';
 
-type CarLocation = 'unknown' | 'track' | 'pit-lane' | 'pit-entry' | 'pit-exit';
+export type CarLocation = 'unknown' | 'track' | 'pit-lane' | 'pit-entry' | 'pit-exit';
 
 export interface RealtimeCarUpdateData {
   carIndex: number;

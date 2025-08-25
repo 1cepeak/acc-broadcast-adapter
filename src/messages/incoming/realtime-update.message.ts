@@ -1,5 +1,5 @@
-import type { Lap } from '../../buffer-reader.js';
-import { IncomingMessage } from '../incoming-message.js';
+import type { Lap } from '@/buffer-reader';
+import { IncomingMessage } from '@/messages/incoming-message';
 
 export type SessionType =
   | 'practice'
