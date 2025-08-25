@@ -31,14 +31,14 @@ process.on('beforeExit', () => adapter.destroy());
 
 ### `createBroadcastAdapter` configuration parameters
 
-| Option               | Required | Default value           | Description                                                    |
-|----------------------|----------|-------------------------|----------------------------------------------------------------|
-| `address`            | ✅       |                         | Device address where ACC is running.                           |
-| `port`               | ✅       |                         | Your ACC Broadcast API port.                                   |
-| `connectionPassword` | ✅       |                         | Connection password to ACC Broadcast API. Should not be empty! |
-| `commandPassword`    | ✅       |                         | Command password to ACC Broadcast API.                         |
-| `updateIntervalMs`   | ⛔️       | 250                     | Info update interval in milliseconds.                          |
-| `displayName`        | ⛔       | "acc-broadcast-adapter" | Name of your connection shown in ACC.                          |
+| Option               | Required | Default value           | Description                                                        |
+|----------------------|----------|-------------------------|--------------------------------------------------------------------|
+| `address`            | ✅       |                         | Device address where ACC is running.                               |
+| `port`               | ✅       |                         | Your ACC Broadcast API port.                                       |
+| `connectionPassword` | ✅       |                         | Connection password to ACC Broadcast API. **Should not be empty!** |
+| `commandPassword`    | ✅       |                         | Command password to ACC Broadcast API.                             |
+| `updateIntervalMs`   | ⛔️       | 250                     | Info update interval in milliseconds.                              |
+| `displayName`        | ⛔       | "acc-broadcast-adapter" | Name of your connection shown in ACC.                              |
 
 ### Sending and handling messages
 
