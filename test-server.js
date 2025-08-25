@@ -4,7 +4,7 @@ import pick from 'lodash/pick.js';
 
 import { createBroadcastAdapter } from './dist/adapter.js';
 
-const { parsed: env } = dotenv.config();
+const { parsed: env } = dotenv.config({ path: '.env.local' });
 const adapter = createBroadcastAdapter({
   address: env.ADDRESS,
   port: env.PORT,
@@ -60,9 +60,9 @@ adapter.on('entry-list-car', (data) => {
   });
 });
 
-adapter.on('track-data', (data) => {
-  console.log(JSON.stringify(data));
-});
+// adapter.on('track-data', (data) => {
+//
+// });
 
 setInterval(() => {
   console.clear();

@@ -63,8 +63,6 @@ export class BroadcastAdapter {
 
     return new Promise((resolve, reject) => {
       const callback = (data: RegistrationResultData) => {
-        console.log(data);
-
         this.connectionId = data.connectionId;
 
         this.off('registration-result', callback);
@@ -85,12 +83,10 @@ export class BroadcastAdapter {
     });
   }
 
-  public disconnect(): Promise<void> {
-    return new Promise((resolve) => {
-      this.connectionId = null;
+  public async disconnect(): Promise<void> {
+    await this.send('unregister-command-application', {});
 
-      resolve();
-    });
+    this.connectionId = null;
   }
 
   public destroy(): void {

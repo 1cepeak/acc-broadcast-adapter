@@ -1,13 +1,9 @@
-// import { OutgoingMessage } from '../../outgoing-message.js';
-//
-// export interface UnregisterCommandApplicationData {
-//
-// }
+import { OutgoingMessage } from '@/messages/outgoing-message';
 
-// export class UnregisterCommandApplicationMessage extends OutgoingMessage<UnregisterCommandApplicationData> {
-//   public getBuffer(): Buffer {
-//     this.writer.
-//
-//     return this.writer.buffer;
-//   }
-// }
+export type UnregisterCommandApplicationData = object;
+
+export class UnregisterCommandApplicationMessage extends OutgoingMessage<UnregisterCommandApplicationData> {
+  public getBuffer(): Buffer {
+    return this.writer.writeUInt8(9).buffer;
+  }
+}
