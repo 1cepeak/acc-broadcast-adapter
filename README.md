@@ -27,7 +27,7 @@ adapter.connect()
 process.on('beforeExit', () => adapter.destroy());
 ```
 
-> Don't forget to destroy your connection using `adapter.destroy()` when Node.js process will be killed.
+> ⚠️ Don't forget to destroy your connection using `adapter.destroy()` when Node.js process will be killed.
 
 ### `createBroadcastAdapter` configuration parameters
 
@@ -40,14 +40,14 @@ process.on('beforeExit', () => adapter.destroy());
 | `updateIntervalMs`   | ⛔️       | 250                     | Info update interval in milliseconds.                          |
 | `displayName`        | ⛔       | "acc-broadcast-adapter" | Name of your connection shown in ACC.                          |
 
-### Handling messages
+### Sending and handling messages
 
 ```ts
-adapter.on('some-message', (data) => console.log(data));
-```
+adapter.on('some-message', (data) => {
+  console.log(data);
+});
 
-### Sending messages
-
-```ts
-adapter.send('some-message', { some: 'data' });
+adapter.send('some-message', {
+  some: 'data',
+});
 ```
