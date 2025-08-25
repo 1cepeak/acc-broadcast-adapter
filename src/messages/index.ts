@@ -17,6 +17,10 @@ import {
 } from '@/messages/incoming/registration-result.message';
 import { type TrackData, TrackDataMessage } from '@/messages/incoming/track-data.message';
 import {
+  type ChangeHudPageData,
+  ChangeHudPageMessage,
+} from '@/messages/outgoing/change-hud-page.message.ts';
+import {
   type RegisterCommandApplicationData,
   RegisterCommandApplicationMessage,
 } from '@/messages/outgoing/register-command-application.message';
@@ -83,6 +87,7 @@ export interface OutgoingMessagesMap {
   'unregister-command-application': UnregisterCommandApplicationData;
   'request-entry-list': RequestEntryListData;
   'request-track-data': RequestTrackData;
+  'change-hud-page': ChangeHudPageData;
 }
 
 export const outgoingMessagesSenders = {
@@ -93,4 +98,5 @@ export const outgoingMessagesSenders = {
   'request-entry-list': (data: RequestEntryListData) =>
     new RequestEntryListMessage(data).getBuffer(),
   'request-track-data': (data: RequestTrackData) => new RequestTrackDataMessage(data).getBuffer(),
+  'change-hud-page': (data: ChangeHudPageData) => new ChangeHudPageMessage(data).getBuffer(),
 };

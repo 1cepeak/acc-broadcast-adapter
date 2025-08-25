@@ -9,14 +9,12 @@ export interface RegisterCommandApplicationData {
 
 export class RegisterCommandApplicationMessage extends OutgoingMessage<RegisterCommandApplicationData> {
   public getBuffer(): Buffer {
-    this.writer
+    return this.writer
       .writeUInt8(1)
       .writeUInt8(4)
       .writeString(this.input.displayName)
       .writeString(this.input.connectionPassword)
       .writeInt32LE(this.input.updateInterval)
-      .writeString(this.input.commandPassword);
-
-    return this.writer.buffer;
+      .writeString(this.input.commandPassword).buffer;
   }
 }
