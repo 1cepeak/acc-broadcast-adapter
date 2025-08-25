@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import dotenv from 'dotenv';
+import omit from 'lodash/omit.js';
 import pick from 'lodash/pick.js';
 
 import { createBroadcastAdapter } from './dist/adapter.js';
@@ -14,11 +15,13 @@ const adapter = createBroadcastAdapter({
 });
 
 const cars = new Map();
+const track = {};
 
 adapter
   .connect()
   .then((connectionId) => {
     adapter.send('request-entry-list', { connectionId });
+    adapter.send('request-track-data', { connectionId });
   })
   .catch((err) => console.log(err));
 
@@ -60,12 +63,11 @@ adapter.on('entry-list-car', (data) => {
   });
 });
 
-// adapter.on('track-data', (data) => {
-//
-// });
+adapter.on('track-data', (data) => Object.assign(track, data));
 
 setInterval(() => {
   console.clear();
+  console.table(omit(track, ['cameraSets']));
   console.table([...cars.values()].sort((a, b) => a.position - b.position));
 }, 250);
 

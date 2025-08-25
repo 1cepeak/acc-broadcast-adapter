@@ -28,6 +28,10 @@ import {
   type UnregisterCommandApplicationData,
   UnregisterCommandApplicationMessage,
 } from '@/messages/outgoing/unregister-command-application.message.ts';
+import {
+  type RequestTrackData,
+  RequestTrackDataMessage,
+} from '@/messages/outgoing/request-track-data.message.ts';
 
 export type IncomingMessages =
   | 'registration-result'
@@ -71,12 +75,14 @@ export const incomingMessagesHandlers = {
 export type OutgoingMessages =
   | 'register-commands-application'
   | 'unregister-command-application'
-  | 'request-entry-list';
+  | 'request-entry-list'
+  | 'request-track-data';
 
 export interface OutgoingMessagesMap {
   'register-commands-application': RegisterCommandApplicationData;
   'unregister-command-application': UnregisterCommandApplicationData;
   'request-entry-list': RequestEntryListData;
+  'request-track-data': RequestTrackData;
 }
 
 export const outgoingMessagesSenders = {
@@ -86,4 +92,5 @@ export const outgoingMessagesSenders = {
     new UnregisterCommandApplicationMessage(data).getBuffer(),
   'request-entry-list': (data: RequestEntryListData) =>
     new RequestEntryListMessage(data).getBuffer(),
+  'request-track-data': (data: RequestTrackData) => new RequestTrackDataMessage(data).getBuffer(),
 };
