@@ -16,10 +16,11 @@ import {
   RegistrationResultMessage,
 } from '@/messages/incoming/registration-result.message';
 import { type TrackData, TrackDataMessage } from '@/messages/incoming/track-data.message';
+import { type ChangeFocusData, ChangeFocusMessage } from '@/messages/outgoing/change-focus.message';
 import {
   type ChangeHudPageData,
   ChangeHudPageMessage,
-} from '@/messages/outgoing/change-hud-page.message.ts';
+} from '@/messages/outgoing/change-hud-page.message';
 import {
   type RegisterCommandApplicationData,
   RegisterCommandApplicationMessage,
@@ -31,11 +32,11 @@ import {
 import {
   type RequestTrackData,
   RequestTrackDataMessage,
-} from '@/messages/outgoing/request-track-data.message.ts';
+} from '@/messages/outgoing/request-track-data.message';
 import {
   type UnregisterCommandApplicationData,
   UnregisterCommandApplicationMessage,
-} from '@/messages/outgoing/unregister-command-application.message.ts';
+} from '@/messages/outgoing/unregister-command-application.message';
 
 export type IncomingMessages =
   | 'registration-result'
@@ -80,7 +81,9 @@ export type OutgoingMessages =
   | 'register-commands-application'
   | 'unregister-command-application'
   | 'request-entry-list'
-  | 'request-track-data';
+  | 'request-track-data'
+  | 'change-hud-page'
+  | 'change-focus';
 
 export interface OutgoingMessagesMap {
   'register-commands-application': RegisterCommandApplicationData;
@@ -88,6 +91,7 @@ export interface OutgoingMessagesMap {
   'request-entry-list': RequestEntryListData;
   'request-track-data': RequestTrackData;
   'change-hud-page': ChangeHudPageData;
+  'change-focus': ChangeFocusData;
 }
 
 export const outgoingMessagesSenders = {
@@ -99,4 +103,5 @@ export const outgoingMessagesSenders = {
     new RequestEntryListMessage(data).getBuffer(),
   'request-track-data': (data: RequestTrackData) => new RequestTrackDataMessage(data).getBuffer(),
   'change-hud-page': (data: ChangeHudPageData) => new ChangeHudPageMessage(data).getBuffer(),
+  'change-focus': (data: ChangeFocusData) => new ChangeFocusMessage(data).getBuffer(),
 };
