@@ -1,17 +1,17 @@
-# acc-broadcast-adapter
+# @icepeak/acc-broadcast-adapter
 
 Node.js adapter for Assetto Corsa Competizione Broadcast API.
 
 ## Usage
 
 ```shell
-npm i @1cepeak/acc-broadcast-adapter
+npm i @icepeak/acc-broadcast-adapter
 ```
 
 ### Connect example
 
 ```ts
-import { createBroadcastAdapter } from '@1cepeak/acc-broadcast-adapter';
+import { createBroadcastAdapter } from '@icepeak/acc-broadcast-adapter';
 
 const adapter = createBroadcastAdapter({
   address: '127.0.0.1',

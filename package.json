@@ -1,6 +1,6 @@
 {
-  "name": "@1cepeak/acc-broadcast-adapter",
-  "version": "1.0.0-alpha.2",
+  "name": "@icepeak/acc-broadcast-adapter",
+  "version": "1.0.0",
   "description": "Node.js adapter for Assetto Corsa Competizione Broadcast API",
   "keywords": [
     "assetto corsa",
@@ -30,6 +30,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.34.0",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/npm": "^12.0.2",

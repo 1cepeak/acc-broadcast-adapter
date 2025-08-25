@@ -28,8 +28,14 @@ jobs:
           cache: "pnpm"
       - name: Install
         run: pnpm install
-      - name: Lint
+      - name: Lint source
         run: pnpm run lint & pnpm run type-check
+      - name: Lint last commit
+        if: github.event_name == 'push'
+        run: npx commitlint --last --verbose
+      - name: Lint PR commits
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
       - name: Build
         run: pnpm run build
       - name: Publish
