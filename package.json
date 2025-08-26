@@ -1,6 +1,6 @@
 {
   "name": "@icepeak/acc-broadcast-adapter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.js adapter for Assetto Corsa Competizione Broadcast API",
   "keywords": [
     "assetto corsa",
@@ -17,6 +17,13 @@
   "main": "dist/adapter.cjs",
   "module": "dist/adapter.js",
   "types": "dist/types/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.ts",
+      "import": "./dist/adapter.js",
+      "require": "./dist/adapter.cjs"
+    }
+  },
   "files": [
     "dist/",
     "README.md",

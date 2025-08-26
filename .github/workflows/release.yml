@@ -27,7 +27,7 @@ jobs:
           node-version: 22
           cache: "pnpm"
       - name: Install
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Lint source
         run: pnpm run lint & pnpm run type-check
       - name: Lint last commit
