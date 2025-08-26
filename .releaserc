@@ -15,13 +15,6 @@
         "preset": "conventionalcommits"
       }
     ],
-    [
-      "@semantic-release/changelog",
-      {
-        "changelogFile": "CHANGELOG.md",
-        "changelogTitle": "Changelog"
-      }
-    ],
     "@semantic-release/npm",
     [
       "@semantic-release/git",
