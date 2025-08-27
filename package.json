@@ -16,12 +16,17 @@
   "type": "module",
   "main": "dist/adapter.cjs",
   "module": "dist/adapter.js",
-  "types": "dist/types/index.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.ts",
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/adapter.js",
       "require": "./dist/adapter.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": ["./dist/types/index.d.ts"]
     }
   },
   "files": [
