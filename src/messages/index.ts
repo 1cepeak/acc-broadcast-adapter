@@ -1,3 +1,7 @@
+import {
+  type BroadcastingEventData,
+  BroadcastingEventMessage,
+} from '@/messages/incoming/broadcasting-event.message';
 import { type EntryListData, EntryListMessage } from '@/messages/incoming/entry-list.message';
 import {
   type EntryListCarData,
@@ -37,7 +41,6 @@ import {
   type UnregisterCommandApplicationData,
   UnregisterCommandApplicationMessage,
 } from '@/messages/outgoing/unregister-command-application.message';
-import { type BroadcastingEventData, BroadcastingEventMessage } from '@/messages/incoming/broadcasting-event.message';
 
 export type IncomingMessages =
   | 'registration-result'
