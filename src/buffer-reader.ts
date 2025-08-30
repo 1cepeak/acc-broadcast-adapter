@@ -1,6 +1,6 @@
 export interface Lap {
   milliseconds: number;
-  splits: number[];
+  splits: (number | null)[];
   carIndex: number;
   driverIndex: number;
   isInvalid: boolean;
@@ -90,12 +90,12 @@ export class BufferReader {
   }
 
   public readLap(): Lap {
-    let milliseconds = this.readInt32LE();
+    const milliseconds = this.readInt32LE();
 
     const carIndex = this.readUInt16LE();
     const driverIndex = this.readUInt16LE();
     const splitCount = this.readUInt8();
-    const splits: number[] = [];
+    const splits: (number | null)[] = new Array(splitCount);
 
     for (let i = 0; i < splitCount; i += 1) {
       splits.push(this.readInt32LE());
@@ -125,17 +125,7 @@ export class BufferReader {
     }
 
     while (splits.length < 3) {
-      splits.push(0);
-    }
-
-    for (let i = 0; i < splits.length; i += 1) {
-      if (splits[i] >= Number.MAX_SAFE_INTEGER) {
-        splits[i] = 0;
-      }
-    }
-
-    if (milliseconds >= Number.MAX_SAFE_INTEGER) {
-      milliseconds = 0;
+      splits.push(null);
     }
 
     return {
