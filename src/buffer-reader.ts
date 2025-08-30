@@ -95,7 +95,7 @@ export class BufferReader {
     const carIndex = this.readUInt16LE();
     const driverIndex = this.readUInt16LE();
     const splitCount = this.readUInt8();
-    const splits: (number | null)[] = new Array(splitCount);
+    const splits: (number | null)[] = [];
 
     for (let i = 0; i < splitCount; i += 1) {
       splits.push(this.readInt32LE());
