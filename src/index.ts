@@ -7,6 +7,10 @@ export function createBroadcastAdapter(config: Config): BroadcastAdapter {
 // Export types
 export type { Config } from '@/adapter';
 export type { IncomingMessages, OutgoingMessages } from '@/messages';
+export type {
+  BroadcastingEventData,
+  EventType,
+} from '@/messages/incoming/broadcasting-event.message';
 export type { EntryListData } from '@/messages/incoming/entry-list.message';
 export type {
   CarInfo,

@@ -37,6 +37,7 @@ import {
   type UnregisterCommandApplicationData,
   UnregisterCommandApplicationMessage,
 } from '@/messages/outgoing/unregister-command-application.message';
+import { type BroadcastingEventData, BroadcastingEventMessage } from '@/messages/incoming/broadcasting-event.message';
 
 export type IncomingMessages =
   | 'registration-result'
@@ -44,7 +45,8 @@ export type IncomingMessages =
   | 'realtime-car-update'
   | 'entry-list'
   | 'entry-list-car'
-  | 'track-data';
+  | 'track-data'
+  | 'broadcast-event';
 
 export function getIncomingMessageType(rawValue: number): IncomingMessages {
   const map: Record<number, IncomingMessages> = {
@@ -54,6 +56,7 @@ export function getIncomingMessageType(rawValue: number): IncomingMessages {
     4: 'entry-list',
     6: 'entry-list-car',
     5: 'track-data',
+    7: 'broadcast-event',
   };
 
   return map[rawValue];
@@ -66,6 +69,7 @@ export interface IncomingMessagesMap {
   'entry-list': EntryListData;
   'entry-list-car': EntryListCarData;
   'track-data': TrackData;
+  'broadcast-event': BroadcastingEventData;
 }
 
 export const incomingMessagesHandlers = {
@@ -75,6 +79,7 @@ export const incomingMessagesHandlers = {
   'entry-list': (buffer: Buffer) => new EntryListMessage(buffer).parse(),
   'entry-list-car': (buffer: Buffer) => new EntryListCarMessage(buffer).parse(),
   'track-data': (buffer: Buffer) => new TrackDataMessage(buffer).parse(),
+  'broadcast-event': (buffer: Buffer) => new BroadcastingEventMessage(buffer).parse(),
 };
 
 export type OutgoingMessages =
